@@ -2,7 +2,11 @@
   {
     "id": 1,
     "servicename": "Graphic Design",
+<<<<<<< HEAD
     "imgg": "https://i.ibb.co/xgnHYpp/graphic-design.png"
+=======
+    "imgg": "https://i.ibb.co/r4hV4Qd/web-design.png"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
   },
   {
     "id": 2,
@@ -12,6 +16,10 @@
   {
     "id": 3,
     "servicename": "Web Development",
+<<<<<<< HEAD
     "imgg": "https://i.ibb.co/K7nvXYY/web-development.png"
+=======
+    "imgg": "https://i.ibb.co/r4hV4Qd/web-design.png"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
   }
 ]

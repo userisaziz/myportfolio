@@ -1,7 +1,11 @@
 import React from "react";
 import "./Home.css";
 import profileimg from "../assets/img/profileimg.png";
+<<<<<<< HEAD
 import Pdf from "../assets/pdf/AbdulAziz.pdf";
+=======
+import Pdf from "../assets/pdf/poojagarva.pdf";
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
 import { Link } from "react-router-dom";
 import Linkedinicon from "../assets/img/socialicons/linkedin.png";
 import Instagramicon from "../assets/img/socialicons/instagram.png";
@@ -23,7 +27,11 @@ const Home = () => {
               />
               <div className="socialmedia">
                 <a
+<<<<<<< HEAD
                   href="https://www.linkedin.com/in/m-a-aziz-ahmed-adnan-404492180/"
+=======
+                  href="https://www.linkedin.com/in/poojagarva/"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -35,7 +43,11 @@ const Home = () => {
                   />
                 </a>
                 <a
+<<<<<<< HEAD
                   href="https://github.com/userisaziz"
+=======
+                  href="https://github.com/poojagarva28"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -47,7 +59,11 @@ const Home = () => {
                   />
                 </a>
                 <a
+<<<<<<< HEAD
                   href="https://www.instagram.com/user_is_aziz/"
+=======
+                  href="https://www.instagram.com/placesiwandered/"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -59,7 +75,11 @@ const Home = () => {
                   />
                 </a>
                 <a
+<<<<<<< HEAD
                   href="mailto:azizadnan370@gmail.com"
+=======
+                  href="mailto:poojagarva123@gmail.com"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                   target="_blank"
                   rel="noreferrer"
                 >

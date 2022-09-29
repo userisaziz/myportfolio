@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+<<<<<<< HEAD
     "projectlink": "https://www.youtube.com/embed/",
     "codelink": "https://github.com/"
   },
@@ -18,5 +19,24 @@
     "id": 4,
     "projectlink": "https://www.youtube.com/embed/",
     "codelink": "https://github.com/"
+=======
+    "projectlink": "https://www.youtube.com/embed/xidxWceG-wA",
+    "codelink": "https://github.com/poojagarva28/portfolio"
+  },
+  {
+    "id": 2,
+    "projectlink": "https://www.youtube.com/embed/aWEYQRIfMJ4",
+    "codelink": "https://github.com/poojagarva28/todo-javascript"
+  },
+  {
+    "id": 3,
+    "projectlink": "https://www.youtube.com/embed/Li1-9zinwEk",
+    "codelink": "https://github.com/poojagarva28/Video-Player-JS"
+  },
+  {
+    "id": 4,
+    "projectlink": "https://www.youtube.com/embed/shhjrGmmcLM",
+    "codelink": "https://github.com/poojagarva28/notes"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
   }
 ]

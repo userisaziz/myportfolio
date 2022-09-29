@@ -49,12 +49,23 @@ const Jsprojects = () => {
             <div className="js">
               <div className="row">
                 <div className="col-sm-6">
+<<<<<<< HEAD
                   <a href="/" target="_blank">
+=======
+                  <a
+                    href="https://poojagarva28.github.io/React-Final/"
+                    target="_blank"
+                  >
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                     <img src={pf3} alt="Ecommerce Small Project" />
                   </a>
                   <br />
                   <a
+<<<<<<< HEAD
                     href="/"
+=======
+                    href="https://github.com/poojagarva28/React-Final"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                     className="btn btn-default d-block github"
                     target="_blank"
                     rel="noreferrer"
@@ -74,12 +85,20 @@ const Jsprojects = () => {
             <div className="js">
               <div className="row">
                 <div className="col-sm-6">
+<<<<<<< HEAD
                   <a href="/" target="_blank">
+=======
+                  <a href="https://shoplane-by-pooja.glitch.me" target="_blank">
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                     <img src={pf1} alt="Ecommerce Small Project" />
                   </a>
                   <br />
                   <a
+<<<<<<< HEAD
                     href="/"
+=======
+                    href="https://github.com/poojagarva28/shoplane"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                     className="btn btn-default d-block github"
                     target="_blank"
                     rel="noreferrer"
@@ -88,11 +107,22 @@ const Jsprojects = () => {
                   </a>
                 </div>
                 <div className="col-sm-6">
+<<<<<<< HEAD
                   <a href="/" target="_blank">
                     <img src={pf2} alt="Ecommerce Small Project" />
                   </a>
                   <a
                     href="/"
+=======
+                  <a
+                    href="https://poojagarva28.github.io/project/"
+                    target="_blank"
+                  >
+                    <img src={pf2} alt="Ecommerce Small Project" />
+                  </a>
+                  <a
+                    href="https://github.com/poojagarva28/project"
+>>>>>>> 4af5fd1eaecdff6edce4658584ef896b26e48bee
                     className="btn btn-default d-block github"
                     target="_blank"
                     rel="noreferrer"
