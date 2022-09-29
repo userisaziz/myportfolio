@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import profileimg from "../assets/img/profileimg.png";
-import Pdf from "../assets/pdf/AbdulAziz.pdf";
+import Pdf from "../assets/pdf/poojagarva.pdf";
 import { Link } from "react-router-dom";
 import Linkedinicon from "../assets/img/socialicons/linkedin.png";
 import Instagramicon from "../assets/img/socialicons/instagram.png";
@@ -23,7 +23,7 @@ const Home = () => {
               />
               <div className="socialmedia">
                 <a
-                  href="https://www.linkedin.com/in/m-a-aziz-ahmed-adnan-404492180/"
+                  href="https://www.linkedin.com/in/poojagarva/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -35,7 +35,7 @@ const Home = () => {
                   />
                 </a>
                 <a
-                  href="https://github.com/userisaziz"
+                  href="https://github.com/poojagarva28"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -47,7 +47,7 @@ const Home = () => {
                   />
                 </a>
                 <a
-                  href="https://www.instagram.com/user_is_aziz/"
+                  href="https://www.instagram.com/placesiwandered/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -59,7 +59,7 @@ const Home = () => {
                   />
                 </a>
                 <a
-                  href="mailto:azizadnan370@gmail.com"
+                  href="mailto:poojagarva123@gmail.com"
                   target="_blank"
                   rel="noreferrer"
                 >
