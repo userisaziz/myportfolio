@@ -49,20 +49,12 @@ const Jsprojects = () => {
             <div className="js">
               <div className="row">
                 <div className="col-sm-6">
-                  <a
-                    href="https://poojagarva28.github.io/React-Final/"
-                    target="_blank"
-                  >
+                  <a href="/" target="_blank">
                     <img src={pf3} alt="Ecommerce Small Project" />
                   </a>
                   <br />
-                  <a
-                    href="https://github.com/poojagarva28/React-Final"
-                    className="btn btn-default d-block github"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Github Code <img src={githubImg} />
+                  <a href="https://github.com/poojagarva28/React-Final">
+                    Github Code <img src={githubImg} alt="" />
                   </a>
                 </div>
               </div>
@@ -77,33 +69,31 @@ const Jsprojects = () => {
             <div className="js">
               <div className="row">
                 <div className="col-sm-6">
-                  <a href="https://shoplane-by-pooja.glitch.me" target="_blank">
+                  <a href="/" target="_blank">
                     <img src={pf1} alt="Ecommerce Small Project" />
                   </a>
                   <br />
                   <a
-                    href="https://github.com/poojagarva28/shoplane"
+                    href="/"
                     className="btn btn-default d-block github"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Github Code <img src={githubImg} />
+                    Github Code <img src={githubImg} alt="" />
                   </a>
                 </div>
                 <div className="col-sm-6">
-                  <a
-                    href="https://poojagarva28.github.io/project/"
-                    target="_blank"
-                  >
+                  <a href="/" target="_blank">
                     <img src={pf2} alt="Ecommerce Small Project" />
                   </a>
+
                   <a
                     href="https://github.com/poojagarva28/project"
                     className="btn btn-default d-block github"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Github Code <img src={githubImg} />
+                    Github Code <img src={githubImg} alt="" />
                   </a>
                 </div>
               </div>

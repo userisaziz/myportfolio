@@ -2,6 +2,7 @@
   {
     "id": 1,
     "servicename": "Graphic Design",
+
     "imgg": "https://i.ibb.co/xgnHYpp/graphic-design.png"
   },
   {
@@ -12,6 +13,7 @@
   {
     "id": 3,
     "servicename": "Web Development",
+
     "imgg": "https://i.ibb.co/K7nvXYY/web-development.png"
   }
 ]

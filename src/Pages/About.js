@@ -10,12 +10,12 @@ const About = () => {
             <div className="aboutcontent">
               <h2>About Me</h2>
               <p>
-                I'm a Full Stack Developer. I love to solve
-                design problems, develop new features and design prototypes
-                using different mediums. My work is mainly focused on
-                frontend-development.Besides, I also like doing
-                photography and videography, where I can express my creative
-                thought process.
+                An enthusiastic engineering fresher who is a self-starter and
+                capable to use technical skills for the betterment of the
+                organization. A talented and creative web developer with an eye
+                for detail looking for an entry-level role at a reputable
+                company. Has hands-on knowledge in both Frontend and Backend
+                skils
               </p>
             </div>
           </div>

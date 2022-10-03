@@ -1,30 +1,30 @@
 [
-    {
-        "id":1,
-        "coursename":"Full Stack developer",
-        "courseyear":"2022",
-        "institute":"Jspider Institute",
-        "grade":"A+ Grade"
-    },
-    {
-        "id":2,
-        "coursename":"B.Tech in Mechanical Engineering",
-        "courseyear":"2021",
-        "institute":"V.T.U University",
-        "grade":"63% Percentage"
-    },
-    {
-        "id":3,
-        "coursename":"PUC",
-        "courseyear":"2017",
-        "institute":"Shree Guru Independent PU College",
-        "grade":"74% Percentage"
-    },
-    {
-        "id":4,
-        "coursename":"SSLC",
-        "courseyear":"2015",
-        "institute":"New Noble Boy’s High School",
-        "grade":"82.83% Percentage"
-    }
+  {
+    "id": 1,
+    "coursename": "Full Stack developer",
+    "courseyear": "2022",
+    "institute": "Jspider Institute",
+    "grade": "A+ Grade"
+  },
+  {
+    "id": 2,
+    "coursename": "B.Tech in Mechanical Engineering",
+    "courseyear": "2021",
+    "institute": "V.T.U University",
+    "grade": "7.03 CGPA"
+  },
+  {
+    "id": 3,
+    "coursename": "PUC",
+    "courseyear": "2017",
+    "institute": "Shree Guru Independent PU College",
+    "grade": "74% Percentage"
+  },
+  {
+    "id": 4,
+    "coursename": "SSLC",
+    "courseyear": "2015",
+    "institute": "New Noble Boy’s High School",
+    "grade": "82.83% Percentage"
+  }
 ]
