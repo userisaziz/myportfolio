@@ -72,10 +72,9 @@ export const projects: Project[] = [
     tagline: "Smart sports turf booking & management platform",
     description:
       "A full-stack platform connecting sports enthusiasts with turf owners. Three-module architecture: user booking app (web + Android), owner management dashboard, and robust backend API.",
-    image:
-      "https://github.com/user-attachments/assets/3ca210e6-009c-46e2-a50e-96b8e6565e4d",
+    image: "/project/turf-buddy/turf-buddy-1.png",
     images: [
-      "https://github.com/user-attachments/assets/3ca210e6-009c-46e2-a50e-96b8e6565e4d",
+      "/project/turf-buddy/turf-buddy-1.png",
     ],
     problem:
       "Sports enthusiasts struggle to find and book turfs, while turf owners lack efficient tools to manage facilities, track bookings, and analyze revenue across multiple locations.",
@@ -173,6 +172,45 @@ export const projects: Project[] = [
     links: {
       github: "https://github.com/userisaziz/rover-dashboard-ui",
       live: "https://rover-dashboard-ui.vercel.app/",
+    },
+  },
+  {
+    slug: "legal-cms",
+    title: "LAW COMPANION",
+    tagline: "Legal case management platform for Indian law firms",
+    description:
+      "A comprehensive legal practice management platform tailored for Indian law firms. Centralizes case records, client profiles, calendars, billing, and legal research with eCourts integration for automated case data retrieval and hearing synchronization.",
+    image: "/project/legal-cms/law-companion-1.png",
+    images: [
+      "/project/legal-cms/law-companion-1.png",
+      "/project/legal-cms/law-companion-2.png",
+      "/project/legal-cms/law-companion-3.png",
+      "/project/legal-cms/law-companion-4.png",
+    ],
+    problem:
+      "Law firms managing multiple cases across various courts lack a unified system for case lifecycle management, hearing calendars, client communication, and billing — leading to missed deadlines and inefficient workflows.",
+    approach:
+      "Built a full-stack platform with React 18 frontend, Supabase backend for auth and data, and serverless Edge Functions for eCourts integration. Features include case management, client CRM, hearing calendars with reminders, billing/invoicing, team management, and analytics with judge-specific insights.",
+    outcome:
+      "Unified legal practice management with automated eCourts data sync, real-time hearing calendars, compliance-ready audit trails, and smart analytics for firm performance tracking.",
+    techStack: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Supabase",
+      "shadcn/ui",
+      "Tailwind CSS",
+      "TanStack Query",
+      "TanStack Table",
+      "FullCalendar",
+      "Recharts",
+      "Zod",
+      "Framer Motion",
+    ],
+    hasWorkflow: false,
+    links: {
+      github: "https://github.com/userisaziz/legal-cms",
+      live: "https://law-companion.vercel.app/",
     },
   },
 ];

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { motion, type Variants } from "framer-motion";
-import { Mail, MessageSquare, Phone, Send, Globe } from "lucide-react";
+import { Mail, MessageSquare, Phone, Send, Globe, Check } from "lucide-react";
 import { useState } from "react";
 
 const containerVariants: Variants = {
@@ -42,6 +42,13 @@ export function ContactFormSection() {
     phone: "",
     message: "",
   });
+  const [phoneCopied, setPhoneCopied] = useState(false);
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText("+917204977240");
+    setPhoneCopied(true);
+    setTimeout(() => setPhoneCopied(false), 2000);
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -145,7 +152,16 @@ export function ContactFormSection() {
                   />
                   <div>
                     <p className="text-sm font-medium text-foreground">Phone</p>
-                    <a href="tel:+917204977240" className="hover:text-primary transition-colors">+91 72049 77240</a>
+                    <button onClick={handleCopyPhone} className="hover:text-primary transition-colors flex items-center gap-1.5 cursor-pointer">
+                      {phoneCopied ? (
+                        <>
+                          <Check className="h-3 w-3" />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <span>+91 72049 77240</span>
+                      )}
+                    </button>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 rounded-xl border border-border/40 bg-background/40 p-3">

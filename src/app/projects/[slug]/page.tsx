@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,8 +10,59 @@ import { CaseStudyClient } from "./case-study-client";
 import { CaseStudyTransition } from "./case-study-transition";
 import { ProjectMedia } from "@/components/sections/project-media";
 
+const SITE_URL = "https://abdulazizadnan.dev";
+
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) {
+    return { title: "Project Not Found" };
+  }
+
+  const url = `${SITE_URL}/projects/${project.slug}`;
+
+  return {
+    title: project.title,
+    description: project.tagline,
+    openGraph: {
+      title: project.title,
+      description: project.tagline,
+      type: "article",
+      url,
+      images: [
+        {
+          url: project.image.startsWith("http")
+            ? project.image
+            : `${SITE_URL}${project.image}`,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.tagline,
+      images: [
+        project.image.startsWith("http")
+          ? project.image
+          : `${SITE_URL}${project.image}`,
+      ],
+    },
+    alternates: {
+      canonical: url,
+    },
+  };
 }
 
 export default async function CaseStudyPage({

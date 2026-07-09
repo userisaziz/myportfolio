@@ -104,6 +104,10 @@ const resources = [
 		title: "Resume",
 		href: "#",
 	},
+	{
+		title: "Email",
+		href: "mailto:azizadnan370@gmail.com",
+	},
 ];
 
 const socialLinks = [
