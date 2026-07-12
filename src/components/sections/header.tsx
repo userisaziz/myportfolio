@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Download } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
@@ -56,6 +56,14 @@ export function Header() {
               Home
             </Link>
           )}
+          <a
+            href="/resume_ai_fullstack.pdf"
+            download
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Resume
+          </a>
           <Button
             variant="ghost"
             size="icon"
@@ -119,6 +127,15 @@ export function Header() {
                 Home
               </Link>
             )}
+            <a
+              href="/resume_ai_fullstack.pdf"
+              download
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              onClick={() => setMobileOpen(false)}
+            >
+              <Download className="h-3.5 w-3.5" />
+              Resume
+            </a>
           </div>
         </div>
       )}
