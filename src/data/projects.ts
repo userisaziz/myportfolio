@@ -1,9 +1,36 @@
+export type ProjectCategory = "voice-ai" | "ai-pipelines" | "fullstack";
+
+export interface ProjectCategoryMeta {
+  id: ProjectCategory;
+  label: string;
+  blurb: string;
+}
+
+export const projectCategories: ProjectCategoryMeta[] = [
+  {
+    id: "voice-ai",
+    label: "Voice & Conversational AI",
+    blurb: "Speech pipelines, speaker diarization and real-time voice agents.",
+  },
+  {
+    id: "ai-pipelines",
+    label: "AI Pipelines & RAG",
+    blurb: "Agentic workflows, retrieval-grounded drafting and LLM ops in production.",
+  },
+  {
+    id: "fullstack",
+    label: "Full-Stack Platforms",
+    blurb: "Booking, fleet telemetry and practice-management products.",
+  },
+];
+
 export interface Project {
   slug: string;
+  category: ProjectCategory;
   title: string;
   tagline: string;
   description: string;
-  image: string;
+  image?: string;
   images?: string[];
   videoUrl?: string;
   problem: string;
@@ -15,12 +42,18 @@ export interface Project {
   links: {
     github?: string;
     live?: string;
+    extra?: { label: string; url: string }[];
   };
+}
+
+export function projectsInCategory(id: ProjectCategory): Project[] {
+  return projects.filter((p) => p.category === id);
 }
 
 export const projects: Project[] = [
   {
     slug: "samaa-ai",
+    category: "voice-ai",
     title: "CXSAMAA",
     tagline: "In-store conversation AI for retail intelligence",
     description:
@@ -68,6 +101,7 @@ export const projects: Project[] = [
   },
   {
     slug: "turf-buddy",
+    category: "fullstack",
     title: "TurfBuddy",
     tagline: "Smart sports turf booking & management platform",
     description:
@@ -104,6 +138,7 @@ export const projects: Project[] = [
   },
   {
     slug: "voice-agent-saas",
+    category: "voice-ai",
     title: "Voice Agent SaaS",
     tagline: "Multi-tenant voice AI platform with eval pipeline",
     description:
@@ -118,7 +153,6 @@ export const projects: Project[] = [
       "/project/voice-agent/voice-agent-6.png",
       "/project/voice-agent/voice-agent-7.png",
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     problem:
       "Enterprises deploying voice agents need systematic evaluation to ensure quality. Manual QA doesn't scale, and there's no standard framework for benchmarking conversational AI.",
     approach:
@@ -137,12 +171,13 @@ export const projects: Project[] = [
     workflowDescription:
       "4-Phase Eval Pipeline: STT -> Semantic Analysis -> Flow Scoring -> Task Completion Check",
     links: {
-      github: "https://github.com/userisaziz",
+      github: "https://github.com/userisaziz/ai-voice-agents",
       live: "#",
     },
   },
   {
     slug: "rover-dashboard",
+    category: "fullstack",
     title: "Rover Dashboard",
     tagline: "Real-time fleet management and analytics dashboard",
     description:
@@ -176,6 +211,7 @@ export const projects: Project[] = [
   },
   {
     slug: "legal-cms",
+    category: "fullstack",
     title: "LAW COMPANION",
     tagline: "Legal case management platform for Indian law firms",
     description:
@@ -212,5 +248,65 @@ export const projects: Project[] = [
       github: "https://github.com/userisaziz/legal-cms",
       live: "https://law-companion.vercel.app/",
     },
+  },
+  {
+    slug: "marsa-tijarah",
+    category: "ai-pipelines",
+    title: "Marsa Tijarah",
+    tagline: "Seven workflows. One pipeline. AI for B2B trade.",
+    description:
+      "Marsa Tijarah is a live Saudi B2B marketplace whose intelligence layer runs seven end-to-end AI workflows — from raw input to human-reviewed output — with bilingual Arabic/English processing and automatic LLM failover.",
+    image: "https://marsatijarah.com/og-image.png",
+    images: ["https://marsatijarah.com/og-image.png"],
+    problem:
+      "B2B catalogues arrive unstructured and multilingual. Enrichment, categorization, SEO and RFQ handling done by hand do not scale, and depending on a single LLM provider risks outages while client-side keys risk exposure.",
+    approach:
+      "Built seven production workflows — catalogue enrichment, category mapping, SEO optimization, RFQ sourcing, RFQ screening and bilingual processing — over an LLM inference layer with automatic cross-model failover and server-side keys, executed as Supabase Edge Functions with human review before anything publishes.",
+    outcome:
+      "Every AI task runs end to end from raw input to human-reviewed output. RFQ sourcing reaches 200+ vendors per request with bilingual outreach, and cross-model failover keeps inference available through provider outages.",
+    techStack: [
+      "Next.js",
+      "Supabase",
+      "Edge Functions",
+      "PostgreSQL",
+      "LLM Failover",
+      "Bilingual AR/EN",
+      "TypeScript",
+    ],
+    hasWorkflow: true,
+    workflowDescription:
+      "Seven workflows: catalogue enrichment, category mapping, SEO optimization, RFQ sourcing, RFQ screening, bilingual processing, LLM inference with automatic failover",
+    links: {
+      live: "https://marsatijarah.com",
+      extra: [
+        {
+          label: "Intelligence · seven workflows",
+          url: "https://marsatijarah.com/intelligence",
+        },
+      ],
+    },
+  },
+  {
+    slug: "ai-quotation-generator",
+    category: "ai-pipelines",
+    title: "AI Quotation Generator",
+    tagline: "RAG-grounded client proposals with deterministic pricing",
+    description:
+      "A freelance quotation tool that retrieves over product catalogues and past quotations to draft scope, while pricing stays deterministic from catalogue data — hallucination-safe, client-ready HTML/PDF output.",
+    problem:
+      "Manual quotations mix guessed scope with guessed prices. LLM-only drafting hallucinates line items and totals, which is unacceptable in client-facing pricing documents.",
+    approach:
+      "RAG over catalogues and past quotations grounds scope drafting in real precedent; a deterministic pricing pass then computes every line from catalogue data so totals always reconcile; output renders as client-ready HTML/PDF.",
+    outcome:
+      "Proposals draft in minutes with every price traceable to catalogue data — no invented line items or totals reach the client.",
+    techStack: [
+      "RAG",
+      "Vector Search",
+      "LLM",
+      "Deterministic Pricing",
+      "HTML/PDF",
+    ],
+    hasWorkflow: false,
+    links: {},
   },
 ];

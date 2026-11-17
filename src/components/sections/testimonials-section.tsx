@@ -20,7 +20,7 @@ const item = {
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="w-full py-20 px-6 sm:px-8">
+    <section id="testimonials" className="w-full scroll-mt-20 py-20 px-6 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

@@ -1,32 +1,32 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { GithubIcon } from "@/components/icons/github-icon";
+import { LinkedinIcon } from "@/components/icons/linkedin-icon";
 import { Separator } from "@/components/ui/separator";
 import { motion, Variants } from "framer-motion";
 import {
   ArrowUpRight,
-  Code2,
   Globe,
   Mail,
   MapPin,
-  MessageCircle,
 } from "lucide-react";
 
 const RESUME_DATA = {
   profile: {
-    name: "Abdul Aziz",
-    role: "Full-Stack & AI Engineer",
-    avatarGradient:
-      "from-gray-100 to-gray-200 dark:from-zinc-800 dark:to-zinc-700",
+    name: "AbdulAziz Adnan",
+    role: "Full Stack Developer & AI Engineer",
+    avatar: "https://github.com/userisaziz.png",
     socials: [
-      { name: "GitHub", icon: Code2, url: "https://github.com/userisaziz" },
-      { name: "LinkedIn", icon: Globe, url: "https://linkedin.com/in/userisaziz" },
+      { name: "GitHub", icon: GithubIcon, url: "https://github.com/userisaziz" },
+      { name: "LinkedIn", icon: LinkedinIcon, url: "https://linkedin.com/in/userisaziz" },
       { name: "Email", icon: Mail, url: "mailto:azizadnan370@gmail.com" },
     ],
   },
   contact: {
     website: "github.com/userisaziz",
-    location: "Bangalore, India",
+    location: "Bengaluru, India",
   },
   stack: [
     "TypeScript",
@@ -44,11 +44,11 @@ const RESUME_DATA = {
   ],
   education: {
     degree: "B.Tech",
-    school: "Vishweshwariyah Technical University (V.T.U)",
+    school: "Visvesvaraya Technological University (VTU)",
     period: "2017 - 2021",
   },
   about: {
-    text: "Full-stack engineer with 3.6+ years building scalable applications using React, Next.js, Node.js, FastAPI, and AWS. Hands-on delivering agentic AI/GenAI systems — RAG pipelines, multi-agent workflows, LLM-integrated voice platforms — for ed-tech and GCC retail products.",
+    text: "Full-Stack & AI Engineer with 4+ years shipping production AI systems — LLM applications, RAG pipelines, agentic workflows — and building real-time voice AI. Currently shipping an ed-tech platform for 10,000+ students (Next.js, Strapi, AWS) and LLM eval systems at 95% less manual review, $0.003/eval. Python + TypeScript across FastAPI, Next.js, PostgreSQL/pgvector, and AWS.",
     company: "",
     suffix: "",
   },
@@ -58,8 +58,10 @@ const RESUME_DATA = {
       company: "AlmaBetter",
       period: "April 2026 - Present",
       description: [
-        "Built and shipped client platforms including AlmaBetter's ed-tech LMS, using Next.js, Strapi, and AWS-backed infrastructure.",
-        "Designed an AI-powered automated evaluation pipeline combining DeepSeek, Gitingest, in-memory RAG with NumPy, and pgvector-based plagiarism detection.",
+        "Shipping the ed-tech LMS platform for 10,000+ students using Next.js, Strapi, and AWS-backed infrastructure — 40% faster page loads.",
+        "Designed the LLM evaluation pipeline on DeepSeek with Gitingest, in-memory RAG with NumPy, and pgvector-based plagiarism detection, plus regression evals, cost/latency tracking and prompt versioning (LLMOps) — 95% less manual review at $0.003 per evaluation.",
+        "Standardized coach and admin dashboards on shadcn/ui + TanStack Query with a universal dark/light theme system; shipped AI-assisted bulk-upload and analytics workflows.",
+        "Zero-downtime releases via GitHub Actions CI/CD with unit tests across weekly feature cycles.",
       ],
     },
     {
@@ -67,8 +69,8 @@ const RESUME_DATA = {
       company: "Antino Labs",
       period: "Jan 2024 - April 2026",
       description: [
-        "Delivered Trimpixel client work using React and micro-frontend architecture, containerized with Docker.",
-        "Implemented analytics tooling for product and engagement reporting.",
+        "Delivered the Trimpixel client product with React micro-frontend architecture, containerized with Docker, working in Scrum — 60% fewer release conflicts.",
+        "Architected an audio-tagging platform end-to-end — 30% less data-operations effort.",
       ],
     },
     {
@@ -76,13 +78,30 @@ const RESUME_DATA = {
       company: "Antino Labs",
       period: "May 2023 - Jan 2024",
       description: [
-        "Built backend services with Node.js and Express, deployed via Jenkins CI/CD pipelines.",
+        "Built Python and Node.js REST APIs deployed via Jenkins CI/CD with pytest coverage; Redis caching cut API response times by 20%.",
         "Contributed to PWA features for improved mobile reliability and offline support.",
       ],
     },
-   
+    {
+      role: "Software Engineer Intern",
+      company: "Enteractive Technology Solutions · Bengaluru",
+      period: "Nov 2022 - Apr 2023",
+      description: [
+        "Developed and unit-tested client web-app features; code reviews and Scrum ceremonies.",
+      ],
+    },
   ],
   projects: [
+    {
+      title: "Marsa Tijarah",
+      desc: "Live Saudi B2B marketplace — seven AI workflows in production, 200+ vendor RFQ outreach.",
+      stars: "Supabase Edge Functions",
+    },
+    {
+      title: "AI Quotation Generator",
+      desc: "RAG over catalogs and past quotes; deterministic pricing; client-ready HTML/PDF proposals.",
+      stars: "Freelance · RAG",
+    },
     {
       title: "CXSAMAA",
       desc: "In-store conversation AI for retail intelligence. 6-stage AI pipeline with NVIDIA Parakeet STT, speaker diarization, and Llama 3.3 analysis.",
@@ -125,9 +144,13 @@ export function MinimalResume() {
           <div className="md:col-span-4 bg-gray-50/50 dark:bg-zinc-900/50 border-r border-gray-200 dark:border-zinc-800 p-8 flex flex-col gap-8 transition-colors duration-300">
             {/* Profile Header */}
             <motion.div variants={item} className="space-y-4">
-              <div
-                className={`h-16 w-16 rounded-full bg-gradient-to-tr ${RESUME_DATA.profile.avatarGradient} border border-gray-200 dark:border-zinc-700`}
-              />
+              <Avatar className="h-16 w-16 border border-gray-200 dark:border-zinc-700">
+                <AvatarImage
+                  src={RESUME_DATA.profile.avatar}
+                  alt={RESUME_DATA.profile.name}
+                />
+                <AvatarFallback className="text-sm font-semibold">AZ</AvatarFallback>
+              </Avatar>
               <div>
                 <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-zinc-100">
                   {RESUME_DATA.profile.name}
@@ -143,6 +166,16 @@ export function MinimalResume() {
                     variant="outline"
                     size="icon"
                     className="h-8 w-8 rounded-md border-gray-200 dark:border-zinc-800 hover:border-gray-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-800 text-gray-500 dark:text-zinc-400 hover:text-black dark:hover:text-zinc-100 transition-all"
+                    render={
+                      <a
+                        href={social.url}
+                        {...(social.url.startsWith("http")
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                        aria-label={social.name}
+                      />
+                    }
+                    nativeButton={false}
                   >
                     <social.icon className="h-4 w-4" />
                   </Button>
@@ -159,7 +192,9 @@ export function MinimalResume() {
               </h2>
               <div className="space-y-2 text-sm">
                 <a
-                  href="#"
+                  href={`https://${RESUME_DATA.contact.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-gray-600 dark:text-zinc-400 hover:text-black dark:hover:text-zinc-200 transition-colors group"
                 >
                   <Globe className="h-3.5 w-3.5 text-gray-400 dark:text-zinc-500 group-hover:text-gray-600 dark:group-hover:text-zinc-300" />

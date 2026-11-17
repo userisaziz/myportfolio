@@ -48,6 +48,26 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@theme inline {
+  --animate-marquee: marquee var(--duration, 30s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--duration, 30s) linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -242,4 +262,10 @@
     animation-duration: 0s !important;
     animation-delay: 0s !important;
   }
+}
+
+/* Glass folder desk: category names are longer than the component's 200px
+   label cap, so let the front-panel label use the pocket's full width. */
+#projects .gf-label {
+  max-width: 252px;
 }

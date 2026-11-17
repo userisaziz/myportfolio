@@ -6,7 +6,7 @@ const StaticMap = dynamic(() => import("./static-map-inner"), { ssr: false });
 
 export function MapSection() {
   return (
-    <section id="location" className="w-full py-20 px-6 sm:px-8">
+    <section id="location" className="w-full scroll-mt-20 py-20 px-6 sm:px-8">
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">

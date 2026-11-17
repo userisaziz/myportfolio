@@ -3,7 +3,7 @@
 import type { Project } from "@/data/projects";
 import { WorkflowDiagram } from "@/components/sections/workflow-diagram";
 
-const workflowSteps: Record<string, { title: string; steps: { label: string; description: string; color: string }[] }> = {
+const workflowSteps: Record<string, { title: string; variant?: "flow" | "grid"; steps: { label: string; description: string; color: string }[] }> = {
   "samaa-ai": {
     title: "Speaker Diarization Pipeline",
     steps: [
@@ -23,6 +23,19 @@ const workflowSteps: Record<string, { title: string; steps: { label: string; des
       { label: "Task Completion", description: "Goal achievement check", color: "purple" },
     ],
   },
+  "marsa-tijarah": {
+    title: "Seven Workflows. One Pipeline.",
+    variant: "grid",
+    steps: [
+      { label: "Catalogue Enrichment", description: "Raw listings to structured attributes", color: "emerald" },
+      { label: "Category Mapping", description: "Taxonomy alignment across the marketplace", color: "blue" },
+      { label: "SEO Optimization", description: "Bilingual titles, descriptions, keywords", color: "amber" },
+      { label: "RFQ Sourcing", description: "200+ vendor discovery and outreach", color: "purple" },
+      { label: "RFQ Screening", description: "Relevance and fraud checks on replies", color: "rose" },
+      { label: "Bilingual Processing", description: "Arabic/English writing and review", color: "indigo" },
+      { label: "LLM Inference", description: "Cross-model failover, server-side keys", color: "cyan" },
+    ],
+  },
 };
 
 export function CaseStudyClient({ project }: { project: Project }) {
@@ -32,5 +45,11 @@ export function CaseStudyClient({ project }: { project: Project }) {
     return null;
   }
 
-  return <WorkflowDiagram title={workflow.title} steps={workflow.steps} />;
+  return (
+    <WorkflowDiagram
+      title={workflow.title}
+      steps={workflow.steps}
+      variant={workflow.variant}
+    />
+  );
 }

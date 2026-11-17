@@ -10,7 +10,7 @@ import { CaseStudyClient } from "./case-study-client";
 import { CaseStudyTransition } from "./case-study-transition";
 import { ProjectMedia } from "@/components/sections/project-media";
 
-const SITE_URL = "https://abdulazizadnan.dev";
+const SITE_URL = "https://aziz-ui-portfolio.vercel.app";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -29,6 +29,11 @@ export async function generateMetadata({
   }
 
   const url = `${SITE_URL}/projects/${project.slug}`;
+  const ogImage = project.image
+    ? project.image.startsWith("http")
+      ? project.image
+      : `${SITE_URL}${project.image}`
+    : null;
 
   return {
     title: project.title,
@@ -38,26 +43,15 @@ export async function generateMetadata({
       description: project.tagline,
       type: "article",
       url,
-      images: [
-        {
-          url: project.image.startsWith("http")
-            ? project.image
-            : `${SITE_URL}${project.image}`,
-          width: 1200,
-          height: 630,
-          alt: project.title,
-        },
-      ],
+      images: ogImage
+        ? [{ url: ogImage, width: 1200, height: 630, alt: project.title }]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: project.title,
       description: project.tagline,
-      images: [
-        project.image.startsWith("http")
-          ? project.image
-          : `${SITE_URL}${project.image}`,
-      ],
+      images: ogImage ? [ogImage] : undefined,
     },
     alternates: {
       canonical: url,
@@ -148,7 +142,10 @@ export default async function CaseStudyPage({
             </p>
           </section>
 
-          {/* Links */}
+          {/* Links — hidden entirely for projects with no public links */}
+          {(project.links.github ||
+            (project.links.live && project.links.live !== "#") ||
+            (project.links.extra && project.links.extra.length > 0)) && (
           <div className="flex gap-4 border-t border-border pt-8">
             {project.links.github && (
               <Link
@@ -174,7 +171,21 @@ export default async function CaseStudyPage({
                 </Button>
               </Link>
             )}
+            {project.links.extra?.map((x) => (
+              <Link
+                key={x.url}
+                href={x.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" className="gap-2">
+                  <ExternalLink className="h-4 w-4" />
+                  {x.label}
+                </Button>
+              </Link>
+            ))}
           </div>
+          )}
         </article>
       </main>
     </CaseStudyTransition>

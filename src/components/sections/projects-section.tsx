@@ -1,105 +1,138 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import { DecorIcon } from "@/components/decor-icon";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import { projects } from "@/data/projects";
+import { useRouter } from "next/navigation";
+import GlassFolder, {
+  type ArtPreset,
+  type FolderFile,
+  type FolderMenuItem,
+} from "@/components/ui/glass-folder-cards";
+import {
+  projectCategories,
+  projectsInCategory,
+  type Project,
+  type ProjectCategory,
+} from "@/data/projects";
+
+/** Each category is a physical folder on the desk; its projects are the files inside. */
+const FOLDER_LOOK: Record<
+  ProjectCategory,
+  { art: ArtPreset; tone: "light" | "dark"; place: "bottom-left" | "top-left" | "top-right"; seed: number }
+> = {
+  "voice-ai": { art: "ember", tone: "light", place: "bottom-left", seed: 5 },
+  "ai-pipelines": { art: "aurora", tone: "dark", place: "top-right", seed: 11 },
+  fullstack: { art: "verdant", tone: "light", place: "top-left", seed: 7 },
+};
+
+/** Short mono second line on each file sheet — status/domain, never invented dates. */
+const SHEET_META: Record<string, string> = {
+  "samaa-ai": "Live · retail",
+  "voice-agent-saas": "Multi-tenant",
+  "marsa-tijarah": "Live production",
+  "ai-quotation-generator": "Freelance",
+  "turf-buddy": "Web + Android",
+  "rover-dashboard": "Real-time IoT",
+  "legal-cms": "eCourts sync",
+};
+
+const SHEET_ART: Record<string, ArtPreset> = {
+  "samaa-ai": "dusk",
+  "voice-agent-saas": "ember",
+  "marsa-tijarah": "aurora",
+  "ai-quotation-generator": "glacier",
+  "turf-buddy": "verdant",
+  "rover-dashboard": "glacier",
+  "legal-cms": "dusk",
+};
+
+const openExternal = (url: string) => () => {
+  window.open(url, "_blank", "noopener,noreferrer");
+};
+
+/** ··· menu: the real live/source links of everything in the folder. */
+function menuFor(list: Project[]): FolderMenuItem[] {
+  const items: FolderMenuItem[] = [];
+  for (const p of list) {
+    if (p.links.live && p.links.live !== "#") {
+      items.push({ label: `${p.title} · live`, onSelect: openExternal(p.links.live) });
+    }
+    for (const x of p.links.extra ?? []) {
+      items.push({ label: x.label, onSelect: openExternal(x.url) });
+    }
+    if (p.links.github && p.links.github !== "https://github.com/userisaziz") {
+      items.push({ label: `${p.title} · source`, onSelect: openExternal(p.links.github) });
+    }
+  }
+  return items;
+}
+
+function filesFor(list: Project[]): FolderFile[] {
+  return list.map((p) => ({
+    name: p.title,
+    meta: SHEET_META[p.slug] ?? "Case study",
+    art: SHEET_ART[p.slug] ?? "glacier",
+    href: `/projects/${p.slug}`,
+  }));
+}
 
 export function ProjectsSection() {
+  const router = useRouter();
+
   return (
-    <section id="projects" className="w-full py-20 px-6 sm:px-8">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-12 text-center">
+    <section id="projects" className="relative w-full scroll-mt-20 overflow-hidden py-20 px-6 sm:px-8">
+      {/* the dotted desk */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 text-foreground opacity-[0.13]"
+        style={{
+          backgroundImage: "radial-gradient(currentColor 1.1px, transparent 1.4px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="mb-14 text-center">
           <h2 className="mb-3 text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
             Featured Projects
           </h2>
           <p className="text-sm text-muted-foreground sm:text-base">
-            Real-world applications built with modern technologies
+            Seven builds in three folders — hover to lean, click to open, pick a file for its case study.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
-          ))}
+        <div className="grid grid-cols-1 items-end justify-items-center gap-x-10 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
+          {projectCategories.map((cat, i) => {
+            const list = projectsInCategory(cat.id);
+            const look = FOLDER_LOOK[cat.id];
+            return (
+              <div key={cat.id} className="flex flex-col items-center gap-5">
+                <GlassFolder
+                  label={cat.label}
+                  meta={`${list.length} case ${list.length === 1 ? "study" : "studies"}`}
+                  art={look.art}
+                  seed={look.seed}
+                  tone={look.tone}
+                  labelPlacement={look.place}
+                  width={320}
+                  appearDelay={i * 140}
+                  action="more"
+                  files={filesFor(list)}
+                  menu={menuFor(list)}
+                  onFileSelect={(file) => {
+                    const project = list.find((p) => p.title === file.name);
+                    if (project) router.push(`/projects/${project.slug}`);
+                  }}
+                />
+                <p className="max-w-[320px] text-center text-xs leading-relaxed text-muted-foreground">
+                  {cat.blurb}
+                </p>
+              </div>
+            );
+          })}
         </div>
+
+        <p className="mt-14 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+          Hover to lean · Click to open · File → case study · ··· → live &amp; source
+        </p>
       </div>
     </section>
-  );
-}
-
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: (typeof projects)[number];
-  index: number;
-}) {
-  return (
-    <Link href={`/projects/${project.slug}`} transitionTypes={['nav-forward']}>
-      <figure
-        className={cn(
-          "group relative flex flex-col overflow-hidden",
-          "rounded-lg border border-border bg-card",
-          "transition-all duration-300 hover:border-primary/40 hover:shadow-lg",
-          "dark:bg-[radial-gradient(50%_80%_at_25%_0%,--theme(--color-foreground/.06),transparent)]"
-        )}
-      >
-        {/* Corner decorations */}
-        <DecorIcon className="size-3" position="top-left" />
-        <DecorIcon className="size-3" position="top-right" />
-
-        {/* Image */}
-        <div className="relative aspect-video overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
-          <div className="absolute top-3 right-3 flex size-8 items-center justify-center rounded-full bg-background/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-            <ArrowUpRight className="size-4 text-foreground" />
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex flex-1 flex-col gap-3 p-6">
-          <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="text-[10px] uppercase tracking-wider">
-              {project.hasWorkflow ? "AI" : "Full Stack"}
-            </Badge>
-            <span className="text-xs text-muted-foreground">
-              {project.techStack.length} technologies
-            </span>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
-            {project.title}
-          </h3>
-
-          <p className="line-clamp-2 text-sm text-muted-foreground leading-relaxed">
-            {project.description}
-          </p>
-
-          <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
-            {project.techStack.slice(0, 3).map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md border border-border bg-muted/50 px-2 py-0.5 text-[11px] text-muted-foreground"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.techStack.length > 3 && (
-              <span className="rounded-md border border-border bg-muted/50 px-2 py-0.5 text-[11px] text-muted-foreground">
-                +{project.techStack.length - 3}
-              </span>
-            )}
-          </div>
-        </div>
-      </figure>
-    </Link>
   );
 }
